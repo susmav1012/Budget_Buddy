@@ -3,7 +3,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
 
-
+import { MyContextProvider } from "./context/MyContext";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -15,12 +15,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
+      <MyContextProvider>
     <html lang="en">
       
       <body className={outfit.className}>
       <Toaster/>
         {children}</body>
     </html>
+    </MyContextProvider>
     </ClerkProvider>
   );
 }
